@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from "styled-components";
 import MovieDetail from "./MovieDetail";
 import Search from "./Search";
+import Filter from "./Filter";
 import MovieList from "./MovieList";
 
 const HomeContainer = styled.section`
@@ -15,17 +16,19 @@ const HomeContainer = styled.section`
 `;
 
 
-function Home() {
+const Home = () => {
   const [selected, setSelected] = useState(false);
   const [expanded, setExpanded] = useState(true);
-  const [rating, setRating] = useState(false);
+  const [rating, setRating] = useState({from: 0, to: 10});
   const [search, setSearch] = useState("");
   const [movies, setMovies] = useState([]);
 
-  console.log("la busq", search)
+  console.log("la busq", search);
+  console.log("el filter", rating);
   return (
     <HomeContainer>
       <Search search={search} setSearch={setSearch} />
+      <Filter rating={rating} setRating={setRating} />
       <MovieDetail movie={selected} />
       <MovieList movies={movies} />
     </HomeContainer>
