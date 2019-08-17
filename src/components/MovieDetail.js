@@ -4,7 +4,7 @@ import styled from "styled-components";
 const MovieDetailContainer = styled.section`
   display: flex;
   flex-wrap: wrap;
-  background: #5C0103; 
+  background: #0C0C0C; 
   width: 100%;
 `;
 

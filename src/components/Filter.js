@@ -1,36 +1,62 @@
 import React from 'react';
 import styled from "styled-components";
+import  { Star as StarIcon, StarBorder }  from '@material-ui/icons';
 
 const FilterContainer = styled.section`
   display: flex;
   flex-wrap: wrap;
-  background: white; 
-  width: 100%;
   color: black;
+  align-items: flex-start;
 `;
 
 const Stars = styled.div`
   display: flex;
   flex-wrap: wrap;
-  background: red;
+  background: white;
   font-size: 3em;
+  border-radius: 5px;
+  padding: 0 10px;
 `;
 
 const StyledStar = styled.div`
   color: white;
-  opacity: ${props => props.isActive ? 1 : 0.5}
+  opacity: ${props => props.isActive ? 1 : 0.5};
+  cursor: pointer;
+  height: 30px;
+  display: flex;
+  @keyframes fadeIn {
+    0% {opacity: 0}
+    100% {opacity: 1}
+  }
+  svg {
+    width: 30px;
+    height: 30px;
+    animation: fadeIn 0.2s ease;
+    transition: 0.2s ease;
+    fill: black;
+    &:hover {
+      transform: scale(1.2)
+    }
+  }
 `;
 
 const Star = ({number, onClick, isActive}) => {
   return (
-    <StyledStar onClick={onClick} isActive={isActive}>{number}</StyledStar>
+    <StyledStar onClick={onClick} isActive={isActive}>
+      {isActive
+        ? <StarIcon />
+        : <StarBorder />
+      }
+    </StyledStar>
   )
 }
 
 const Filter = ({rating, setRating}) => {
   
   const handleRating = number => {
-    setRating({from: number, to: number + 2});
+    rating
+    ? setRating(false)
+    : setRating({from: number, to: number + 2});
   }
 
   return (
