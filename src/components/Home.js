@@ -4,6 +4,7 @@ import MovieDetail from "./MovieDetail";
 import Search from "./Search";
 import Filter from "./Filter";
 import MovieList from "./MovieList";
+import axios from "axios";
 
 const HomeContainer = styled.section`
   display: flex;
@@ -37,7 +38,20 @@ const MainNav = styled.nav`
   }
 `;
 
+
+const apiKey = "76c0508c4e3b67db90f6b3f0eb61ccde";
+
 const Home = () => {
+  async function getUser() {
+    try {
+      const response = await axios.get(`https://api.themoviedb.org/3/movie/550?api_key=${apiKey}`);
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  getUser();
+  
   const [selected, setSelected] = useState(false);
   const [expanded, setExpanded] = useState(true);
   const [rating, setRating] = useState(false);
