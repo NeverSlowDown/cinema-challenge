@@ -42,15 +42,15 @@ const MainNav = styled.nav`
 const apiKey = "76c0508c4e3b67db90f6b3f0eb61ccde";
 
 const Home = () => {
-  async function getUser() {
+  async function getPopularMovies() {
     try {
-      const response = await axios.get(`https://api.themoviedb.org/3/movie/550?api_key=${apiKey}`);
+      const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=popularity.desc`);
       console.log(response);
     } catch (error) {
       console.error(error);
     }
   }
-  getUser();
+  getPopularMovies();
   
   const [selected, setSelected] = useState(false);
   const [expanded, setExpanded] = useState(true);
