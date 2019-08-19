@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
 import MovieDetail from "./MovieDetail";
 import Search from "./Search";
@@ -45,13 +45,18 @@ const Home = () => {
   async function getPopularMovies() {
     try {
       const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=popularity.desc`);
+      setMovies(response.data.results);
       console.log(response);
     } catch (error) {
       console.error(error);
     }
   }
-  getPopularMovies();
-  
+
+  //like a DidMount lifecycle
+  useEffect(() => {
+    getPopularMovies();
+  }, [])
+
   const [selected, setSelected] = useState(false);
   const [expanded, setExpanded] = useState(true);
   const [rating, setRating] = useState(false);
