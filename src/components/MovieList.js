@@ -22,16 +22,21 @@ const Item = styled.li`
   position: relative;
   overflow: hidden;
   transition: 0.3s ease;
+  border-radius: 1em;
   &:hover {
     filter: brightness(105%) saturate(122%) contrast(115%);
   }
 `;
 
 const MovieImage = styled.figure`
-  background: url(${props => props.src}) no-repeat top center;
+  background: url(${props => props.src}) no-repeat 0% 0%;
   background-size: cover;
   height: 250px;
   width: 100%;
+  transition: 1.5s ease-out;
+  ${Item}:hover & {
+    background-position: 0 100% !important;
+  }
 `;
 
 const MovieTitle = styled.h2`
