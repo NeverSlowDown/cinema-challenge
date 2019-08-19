@@ -6,6 +6,12 @@ const MovieListContainer = styled.section`
   flex-wrap: wrap;
   background: #0C0C0C; 
   width: 100%;
+  position: fixed;
+  height: ${props => props.isSelected ? "50vh" : "100vh"};
+  overflow-y: scroll;
+  z-index: 3;
+  bottom: 0;
+  transition: 0.5s ease;
 `;
 
 const List = styled.ul`
@@ -78,14 +84,14 @@ const MovieData = styled.article`
   }
 `;
 
-const MovieList = ({movies}) => {
+const MovieList = ({movies, setSelected, selected}) => {
 
   return (
-    <MovieListContainer>
+    <MovieListContainer isSelected={selected}>
       <List>
         { movies.length > 0 ? movies.map(movie => {
           return (
-            <Item>
+            <Item key={movie.title} onClick={() => setSelected(movie)}>
               <MovieImage src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2${movie.poster_path}`} />
               <MovieData>
                 <MovieTitle>

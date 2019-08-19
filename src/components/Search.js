@@ -8,6 +8,7 @@ const SearchContainer = styled.section`
   width: 300px;
   color: black;
   align-items: flex-start;
+  z-index: 2;
 `;
 
 const SearchInput = styled.div`
