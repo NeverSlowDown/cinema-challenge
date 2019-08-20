@@ -95,7 +95,7 @@ const CloseBtn = styled.button`
   top: 10vh;
   z-index: 3;
   background: none;
-  color: white;Star
+  color: white;
   cursor: pointer;
   &:hover{
     svg {

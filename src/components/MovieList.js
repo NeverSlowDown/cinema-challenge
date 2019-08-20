@@ -92,16 +92,22 @@ const MovieData = styled.article`
   }
 `;
 
-const MovieList = ({movies, setSelected, selected}) => {
+const MovieList = ({movies, setSelected, selected, rating}) => {
 
   const Vote = vote => {
     return Math.floor(vote / 2);
   }
+  const FilteredMovies = item => {
+   return Math.floor(item.vote_average / 2) === (rating.to / 2)
+  }
 
+  const moviesList = rating ? R.filter(FilteredMovies , movies): movies;
+
+  console.log("a ver esto ", rating, "y ", moviesList )
   return (
     <MovieListContainer isSelected={selected}>
       <List>
-        { movies.length > 0 ? movies.map(movie => {
+        { moviesList.length > 0 ? moviesList.map(movie => {
           return (
             <Item key={movie.title} onClick={() => setSelected(movie)}>
               <MovieImage src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2${movie.poster_path}`} />

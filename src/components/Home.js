@@ -64,7 +64,7 @@ const Home = () => {
       {selected &&
         <MovieDetail setSelected={setSelected} movie={selected} />
       }
-      <MovieList selected={selected} setSelected={setSelected} movies={movies} />
+      <MovieList rating={rating} selected={selected} setSelected={setSelected} movies={movies} />
     </HomeContainer>
   );
 }
