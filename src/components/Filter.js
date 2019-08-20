@@ -19,8 +19,7 @@ const Stars = styled.div`
 `;
 
 const StyledStar = styled.div`
-  color: white;
-  opacity: ${props => props.isActive ? 1 : 0.5};
+  opacity: ${props => props.isActive ? 1 : 0.3};
   cursor: pointer;
   height: 30px;
   display: flex;
@@ -33,7 +32,7 @@ const StyledStar = styled.div`
     height: 30px;
     animation: fadeIn 0.2s ease;
     transition: 0.2s ease;
-    fill: black;
+    fill: ${props => props.isActive ? "#ffc020" : "black"};
     &:hover {
       transform: scale(1.2)
     }

@@ -31,6 +31,10 @@ const Item = styled.li`
   overflow: hidden;
   transition: 0.3s ease;
   border-radius: 1em;
+  max-width: 300px;
+  max-height: 250px;
+  width: 100%;
+  margin: 0 auto;
   &:hover {
     filter: brightness(105%) saturate(122%) contrast(115%);
   }
