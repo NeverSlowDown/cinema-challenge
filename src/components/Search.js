@@ -62,7 +62,7 @@ const Search = ({setMovies, apiKey}) => {
       const response = await axios.get(Query);
       setMovies(response.data.results);
       setSearch(inputVal);
-      console.log("A VERRR EVARVEVREVAVERAV ERVAEVR ", response);
+      console.log(response);
     } catch (error) {
       console.error(error);
     }

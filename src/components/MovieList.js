@@ -114,7 +114,6 @@ const MovieList = ({movies, setSelected, selected, rating}) => {
 
   const moviesList = rating ? R.filter(FilteredMovies , movies): movies;
 
-  console.log("a ver esto ", rating, "y ", moviesList )
   return (
     <MovieListContainer isSelected={selected}>
       <List>
