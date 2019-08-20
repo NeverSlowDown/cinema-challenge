@@ -13,7 +13,7 @@ const MovieDetailContainer = styled.section`
   top: 0;
 `;
 
-const InfoContainer = styled.article`
+const InfoContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -38,7 +38,7 @@ const InfoContainer = styled.article`
   animation: fadeIn 0.5s 0.25s ease forwards;
 `;
 
-const Info = styled.article`
+const Info = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -107,6 +107,17 @@ const CloseBtn = styled.button`
   }
 `;
 
+const MovieArticle = styled.article`
+
+`;
+
+const MovieOverview = styled.p`
+  max-width: 500px;
+  margin-top: 50px;
+  line-height: 1.25em;
+  font-size: 1.1em;
+`;
+
 const MovieDetail = ({movie, setSelected}) => {
 
   return (
@@ -118,12 +129,14 @@ const MovieDetail = ({movie, setSelected}) => {
           <MovieImageContainer>
             <MovieImage src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2${movie.poster_path}`} />
           </MovieImageContainer>
-          <MovieTitle>
-            {movie.title}
-          </MovieTitle>
-          <p>
-            {movie.description} 
-          </p>
+          <MovieArticle>
+            <MovieTitle>
+              {movie.title}
+            </MovieTitle>
+            <MovieOverview>
+              {movie.overview} 
+            </MovieOverview>
+          </MovieArticle>
         </Info>
       </InfoContainer>
     </MovieDetailContainer>

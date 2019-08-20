@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from "styled-components";
+import * as R from "ramda";
+import  {Star}  from '@material-ui/icons';
 
 const MovieListContainer = styled.section`
   display: flex;
@@ -39,9 +41,9 @@ const MovieImage = styled.figure`
   background-size: cover;
   height: 250px;
   width: 100%;
-  transition: 1.5s ease-out;
+  transition: .5s ease-out;
   ${Item}:hover & {
-    background-position: 0 100% !important;
+    background-position: 0 25% !important;
   }
 `;
 
@@ -52,6 +54,12 @@ const MovieTitle = styled.h2`
 `;
 
 const MovieStars = styled.div`
+  min-width: 90px;
+  display: flex;
+  justify-content: flex-end;
+  svg {
+    width: 0.75em;
+  }
 `;
 
 const MovieData = styled.article`
@@ -86,6 +94,10 @@ const MovieData = styled.article`
 
 const MovieList = ({movies, setSelected, selected}) => {
 
+  const Vote = vote => {
+    return Math.floor(vote / 2);
+  }
+
   return (
     <MovieListContainer isSelected={selected}>
       <List>
@@ -98,7 +110,7 @@ const MovieList = ({movies, setSelected, selected}) => {
                   {movie.title}
                 </MovieTitle>
                 <MovieStars>
-                  {movie.vote_average}
+                  {R.repeat(<Star />, Vote(movie.vote_average))}
                 </MovieStars>
               </MovieData>
             </Item>
