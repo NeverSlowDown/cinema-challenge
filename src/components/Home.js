@@ -61,7 +61,9 @@ const Home = () => {
         <Search search={search} setSearch={setSearch} />
         <Filter rating={rating} setRating={setRating} />
       </MainNav>
-      <MovieDetail setSelected={setSelected} movie={selected} />
+      {selected &&
+        <MovieDetail setSelected={setSelected} movie={selected} />
+      }
       <MovieList selected={selected} setSelected={setSelected} movies={movies} />
     </HomeContainer>
   );

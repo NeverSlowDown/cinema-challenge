@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
-import  {Close as CloseIcon}  from '@material-ui/icons';
+import  {Close as CloseIcon, Star}  from '@material-ui/icons';
+import * as R from "ramda";
 
 const MovieDetailContainer = styled.section`
   display: flex;
@@ -84,6 +85,7 @@ const MovieImage = styled.img``;
 
 const MovieImageContainer = styled.figure`
   margin-right: 50px;
+  display: flex;
 `;
 
 const CloseBtn = styled.button`
@@ -93,7 +95,7 @@ const CloseBtn = styled.button`
   top: 10vh;
   z-index: 3;
   background: none;
-  color: white;
+  color: white;Star
   cursor: pointer;
   &:hover{
     svg {
@@ -118,6 +120,36 @@ const MovieOverview = styled.p`
   font-size: 1.1em;
 `;
 
+const StarsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  svg {
+    opacity: 0;
+    @keyframes starIn {
+      0% {opacity: 0;}
+      100% {opacity: 1;}
+    }
+    animation: starIn 0.3s ease forwards;
+    &:nth-child(1) {
+      animation-delay: 0.5s !important
+    }
+    &:nth-child(2) {
+      animation-delay: 0.7s !important
+    }
+    &:nth-child(3) {
+      animation-delay: 0.9s !important
+    }
+    &:nth-child(4) {
+      animation-delay: 1.1s !important
+    }
+    &:nth-child(5) {
+      animation-delay: 1.3s !important
+    }
+    
+  }
+`;
+
 const MovieDetail = ({movie, setSelected}) => {
 
   return (
@@ -128,6 +160,9 @@ const MovieDetail = ({movie, setSelected}) => {
         <Info>
           <MovieImageContainer>
             <MovieImage src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2${movie.poster_path}`} />
+            <StarsContainer>
+              {R.repeat(<Star />, Math.floor(movie.vote_average / 2))}
+            </StarsContainer>
           </MovieImageContainer>
           <MovieArticle>
             <MovieTitle>

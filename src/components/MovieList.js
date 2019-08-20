@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from "styled-components";
 import * as R from "ramda";
 import  {Star}  from '@material-ui/icons';
