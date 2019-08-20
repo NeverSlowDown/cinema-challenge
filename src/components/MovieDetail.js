@@ -28,6 +28,7 @@ const InfoContainer = styled.div`
   justify-content: center;
   opacity: 0;
   background: rgba(0,0,0,0.75);
+  padding: 10px;
   @keyframes fadeIn {
     0%{
       opacity: 0;
@@ -66,6 +67,10 @@ const MovieTitle = styled.h1`
   max-width: 500px;
   line-height: 1.25em;
   text-shadow: 20px 16px 10px #9b9b9b;
+  @media screen and (max-width: 850px) {
+    font-size: 1.75em;
+    letter-spacing: 0;
+  }
   @keyframes letter {
     0%{
       text-shadow: 20px 16px 5px #9b9b9b;
@@ -81,7 +86,11 @@ const MovieTitle = styled.h1`
 `;
 
 
-const MovieImage = styled.img``;
+const MovieImage = styled.img`
+  @media screen and (max-width: 850px) {
+    display: none;
+  }
+`;
 
 const MovieImageContainer = styled.figure`
   margin-right: 50px;
@@ -145,6 +154,10 @@ const StarsContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 10px;
+  @media screen and (max-width: 850px) {
+    flex-direction: row;
+    margin-left: 0;
+  }
   svg {
     opacity: 0;
     @keyframes starIn {
