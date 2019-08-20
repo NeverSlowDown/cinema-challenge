@@ -80,7 +80,7 @@ const Search = ({setMovies, apiKey}) => {
   return (
     <SearchContainer>
       <SearchInput>
-        <input onKeyDown={enterKey} type="search" onChange={handleChange} />
+        <input placeholder="search movie" onKeyDown={enterKey} type="search" onChange={handleChange} />
         <SearchButton onClick={() => search !== inputVal && handleSubmit(inputVal)}>
           <SearchIcon />
         </SearchButton>
