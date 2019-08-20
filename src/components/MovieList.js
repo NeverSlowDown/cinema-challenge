@@ -2,6 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import * as R from "ramda";
 import  {Star, PanTool}  from '@material-ui/icons';
+import {getStars} from "../utils";
 
 const MovieListContainer = styled.section`
   display: flex;
@@ -107,11 +108,8 @@ const Empty = styled.div`
 
 const MovieList = ({movies, setSelected, selected, rating}) => {
 
-  const Vote = vote => {
-    return Math.floor(vote / 2);
-  }
   const FilteredMovies = item => {
-   return Math.floor(item.vote_average / 2) === (rating.to / 2) || item.vote_average === 0;
+   return (item.vote_average <= rating.to && item.vote_average >= rating.from);
   }
 
   const moviesList = rating ? R.filter(FilteredMovies , movies): movies;
@@ -129,7 +127,7 @@ const MovieList = ({movies, setSelected, selected, rating}) => {
                   {movie.title}
                 </MovieTitle>
                 <MovieStars>
-                  {R.repeat(<Star />, movie.vote_average < 1 ? 1 : Vote(movie.vote_average))}
+                  {R.repeat(<Star />, getStars(movie.vote_average))}
                 </MovieStars>
               </MovieData>
             </Item>

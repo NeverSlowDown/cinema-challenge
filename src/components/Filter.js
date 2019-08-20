@@ -38,7 +38,7 @@ const StyledStar = styled.div`
   }
 `;
 
-const Star = ({number, onClick, isActive}) => {
+const Star = ({onClick, isActive}) => {
   return (
     <StyledStar onClick={onClick} isActive={isActive}>
       {isActive

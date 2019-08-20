@@ -2,6 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import  {Close as CloseIcon, Star}  from '@material-ui/icons';
 import * as R from "ramda";
+import {getStars} from "../utils";
 
 const MovieDetailContainer = styled.section`
   display: flex;
@@ -195,7 +196,7 @@ const MovieDetail = ({movie, setSelected}) => {
           <MovieImageContainer>
             <MovieImage src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2${movie.poster_path}`} />
             <StarsContainer>
-              {R.repeat(<Star />, movie.vote_average < 1 ? 1 : Math.floor(movie.vote_average / 2))}
+              {R.repeat(<Star />, getStars(movie.vote_average))}
             </StarsContainer>
           </MovieImageContainer>
           <MovieArticle>
