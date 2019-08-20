@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import * as R from "ramda";
-import  {Star}  from '@material-ui/icons';
+import  {Star, PanTool}  from '@material-ui/icons';
 
 const MovieListContainer = styled.section`
   display: flex;
@@ -93,6 +93,18 @@ const MovieData = styled.article`
   }
 `;
 
+const Empty = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  svg {
+    margin-bottom: 10px;
+  }
+`;
+
 const MovieList = ({movies, setSelected, selected, rating}) => {
 
   const Vote = vote => {
@@ -124,7 +136,7 @@ const MovieList = ({movies, setSelected, selected, rating}) => {
           )
         })
         :
-          <span>vacio</span>
+          <Empty><PanTool /> No results</Empty>
         }
       </List>
     </MovieListContainer>

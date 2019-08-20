@@ -118,6 +118,27 @@ const MovieOverview = styled.p`
   margin-top: 50px;
   line-height: 1.25em;
   font-size: 1.1em;
+  max-height: 180px;
+  overflow-y: auto;
+  &::-webkit-scrollbar-track
+  {
+    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    border-radius: 10px;
+    background-color: rgba(0,0,0,.3);
+  }
+
+  &::-webkit-scrollbar
+  {
+    width: 12px;
+    background-color: rgba(0,0,0,.3);
+  }
+
+  &::-webkit-scrollbar-thumb
+  {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: rgba(255,255,255,.7);
+  }
 `;
 
 const StarsContainer = styled.div`
