@@ -109,7 +109,7 @@ const Empty = styled.div`
 const MovieList = ({movies, setSelected, selected, rating}) => {
 
   const FilteredMovies = item => {
-   return (item.vote_average <= rating.to && item.vote_average >= rating.from);
+   return rating.from === 0 && item.vote_average < 1 ? true : (item.vote_average <= rating.to && item.vote_average > rating.from);
   }
 
   const moviesList = rating ? R.filter(FilteredMovies , movies): movies;
