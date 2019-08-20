@@ -14,6 +14,7 @@ const MovieListContainer = styled.section`
   z-index: 3;
   bottom: 0;
   transition: 0.5s ease;
+  padding: 100px 0px;
 `;
 
 const List = styled.ul`
@@ -75,12 +76,8 @@ const MovieData = styled.article`
   width: 100%;
   bottom: 0;
   left: 0;
-  min-height: 80px;
-  transform: translateY(20px);
+  min-height: 100px;
   transition: 0.3s ease;
-  ${Item}:hover & {
-    transform: translateY(0px);
-  }
    &:after {
     content: "";
     background: -moz-linear-gradient(top,  rgba(0,0,0,0.8) 10%, rgba(0,0,0,0.0) 100%);
@@ -102,7 +99,7 @@ const MovieList = ({movies, setSelected, selected, rating}) => {
     return Math.floor(vote / 2);
   }
   const FilteredMovies = item => {
-   return Math.floor(item.vote_average / 2) === (rating.to / 2)
+   return Math.floor(item.vote_average / 2) === (rating.to / 2) || item.vote_average === 0;
   }
 
   const moviesList = rating ? R.filter(FilteredMovies , movies): movies;
@@ -113,14 +110,14 @@ const MovieList = ({movies, setSelected, selected, rating}) => {
       <List>
         { moviesList.length > 0 ? moviesList.map(movie => {
           return (
-            <Item key={movie.title} onClick={() => setSelected(movie)}>
+            <Item key={movie.id} onClick={() => setSelected(movie)}>
               <MovieImage src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2${movie.poster_path}`} />
               <MovieData>
                 <MovieTitle>
                   {movie.title}
                 </MovieTitle>
                 <MovieStars>
-                  {R.repeat(<Star />, Vote(movie.vote_average))}
+                  {R.repeat(<Star />, movie.vote_average < 1 ? 1 : Vote(movie.vote_average))}
                 </MovieStars>
               </MovieData>
             </Item>

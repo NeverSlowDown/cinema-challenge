@@ -12,14 +12,13 @@ const FilterContainer = styled.section`
 const Stars = styled.div`
   display: flex;
   flex-wrap: wrap;
-  background: white;
   font-size: 3em;
   border-radius: 5px;
   padding: 0 10px;
 `;
 
 const StyledStar = styled.div`
-  opacity: ${props => props.isActive ? 1 : 0.3};
+  opacity: 1;
   cursor: pointer;
   height: 30px;
   display: flex;
@@ -32,7 +31,7 @@ const StyledStar = styled.div`
     height: 30px;
     animation: fadeIn 0.2s ease;
     transition: 0.2s ease;
-    fill: ${props => props.isActive ? "#ffc020" : "black"};
+    fill: ${props => props.isActive ? "#ffc020" : "white"};
     &:hover {
       transform: scale(1.2)
     }
@@ -53,7 +52,7 @@ const Star = ({number, onClick, isActive}) => {
 const Filter = ({rating, setRating}) => {
   
   const handleRating = number => {
-    rating
+    rating.from === number
     ? setRating(false)
     : setRating({from: number, to: number + 2});
   }

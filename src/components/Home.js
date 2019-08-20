@@ -31,7 +31,13 @@ const MainNav = styled.nav`
 const apiKey = "76c0508c4e3b67db90f6b3f0eb61ccde";
 
 const Home = () => {
-  async function getPopularMovies() {
+
+  const [selected, setSelected] = useState(false);
+  const [rating, setRating] = useState(false);
+  const [movies, setMovies] = useState([]);
+
+  //like a DidMount lifecycle
+  useEffect(async () => {
     try {
       const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=popularity.desc`);
       setMovies(response.data.results);
@@ -39,26 +45,12 @@ const Home = () => {
     } catch (error) {
       console.error(error);
     }
-  }
-
-  //like a DidMount lifecycle
-  useEffect(() => {
-    getPopularMovies();
   }, [])
 
-  const [selected, setSelected] = useState(false);
-  const [expanded, setExpanded] = useState(true);
-  const [rating, setRating] = useState(false);
-  const [search, setSearch] = useState("");
-  const [movies, setMovies] = useState([]);
-
-  console.log("la busq", search);
-  console.log("el filter", rating);
-  console.log("selected: ", selected)
   return (
     <HomeContainer>
       <MainNav selectedMovie={selected}>
-        <Search search={search} setSearch={setSearch} />
+        <Search setMovies={setMovies} apiKey={apiKey} />
         <Filter rating={rating} setRating={setRating} />
       </MainNav>
       {selected &&

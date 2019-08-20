@@ -161,7 +161,7 @@ const MovieDetail = ({movie, setSelected}) => {
           <MovieImageContainer>
             <MovieImage src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2${movie.poster_path}`} />
             <StarsContainer>
-              {R.repeat(<Star />, Math.floor(movie.vote_average / 2))}
+              {R.repeat(<Star />, movie.vote_average < 1 ? 1 : Math.floor(movie.vote_average / 2))}
             </StarsContainer>
           </MovieImageContainer>
           <MovieArticle>
